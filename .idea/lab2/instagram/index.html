@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Мессенджер MAX</title>
+    <link rel = "stylesheet" href="style.css" />
+</head>
+<body>
+
+<main class = "page">
+    <section class = "layout" >
+
+<!--        left-->
+        <div class = "promo">
+            <div class = "ig-mark">
+                <!-- ig mark svg -->
+                <svg width = "56" height = "56" viewBox = "0 0 24 24" fill = "none">
+                    <defs>
+                        <linearGradient id = "igGradient" x1 = "0" y1 = "24" x2 = "24" y2 = "0" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#f58529"/>
+                            <stop offset="45%" stop-color = "#dd2a7b"/>
+                            <stop offset="100%" stop-color = "#515bd4"/>
+                        </linearGradient>
+                    </defs>
+                    <rect x = "3" y = "3" width = "18" height = "18" rx = "5" stroke = "url(#igGradient)" stroke-width = "2"/>
+                    <circle cx = "12" cy = "12" r = "4" stroke="url(#igGradient)" stroke-width="2"/>
+                    <circle cx = "17.5" cy = "6.5" r = "1" fill = "url(#igGradient)"/>
+                </svg>
+            </div>
+
+
+            <h1 class="promo-title">
+                Посмотрите, какими <br>
+                моментами из жизни <br>
+                поделились ваши <span class="accent1">близкие</span> <br>
+                <span class="accent2">друзья.</span>
+            </h1>
+
+            <img src="https://static.cdninstagram.com/rsrc.php/v4/yt/r/pAv7hjq-51n.png" alt="mockphoto" class="mockphoto">
+        </div>
+
+        <div class = "divider" aria-hidden = "true"></div>
+
+        <!-- right login -->
+        <div class = "auth">
+            <div class = "auth-inner">
+                <p class = "auth-title">Войти в Instagram</p>
+
+                <form class = "form">
+                    <input
+                            class = "input"
+                            type = "text"
+                            placeholder = "Имя пользователя, номер мобильного телефона или эл. адрес"
+                            required
+                    />
+                    <input class = "input" type = "password" placeholder = "Пароль" required/>
+                    <button class = "btn primary" type = "submit">Войти</button>
+                    <a class = "link small" href = "#">Забыли пароль?</a>
+
+                    <div class = "or">
+                        <span class = "line"></span>
+                        <span class = "or-text">ИЛИ</span>
+                        <span class = "line"></span>
+                    </div>
+
+                    <button class="btn ghost" type="button">
+                        <span class="fb-dot" aria-hidden="true"></span>
+                        Войти через Facebook
+                    </button>
+
+                    <button class="btn outline" type="button">Создать новый аккаунт</button>
+
+                    <div class="meta">
+                        <span class="meta-icon" aria-hidden="true">∞</span>
+                        <span>Meta</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer">
+        <div class="footer-line"></div>
+
+        <nav class="footer-links">
+            <a href="#">Meta</a>
+            <a href="#">Информация</a>
+            <a href="#">Блог</a>
+            <a href="#">Вакансии</a>
+            <a href="#">Помощь</a>
+            <a href="#">API</a>
+            <a href="#">Конфиденциальность</a>
+            <a href="#">Условия</a>
+            <a href="#">Места</a>
+            <a href="#">Instagram Lite</a>
+            <a href="#">Threads</a>
+            <a href="#">Загрузка контактов и лица</a>
+            <a href="#">Meta Verified</a>
+        </nav>
+
+        <div class="footer-bottom">
+            <span>Русский</span>
+            <span>© 2026 Instagram from Meta</span>
+        </div>
+    </footer>
+</main>
+
+</body>
+</html>
