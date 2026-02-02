@@ -65,12 +65,15 @@ th, td {
     padding: 8px;
     text-align: left;
 }
+th{
+    background: #58ff42;
+}
 tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #a89ff5;
 }
 
 tr:nth-child(odd) {
-    background-color: #a89ff5;
+    background-color: #f2f2f2;
 }
 
 
