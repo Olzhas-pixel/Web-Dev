@@ -1,0 +1,56 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 22px;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+.h-title {
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.h-sub {
+  color: #666;
+  font-size: 13px;
+}
+
+.cats {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.cat {
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid #e3e3e3;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.cat.active {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+.main {
+  margin-top: 10px;
+}
+
+.welcome {
+  padding: 18px;
+  border: 1px dashed #ddd;
+  border-radius: 14px;
+  background: #fff;
+  color: #444;
+}

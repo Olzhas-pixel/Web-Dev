@@ -1,0 +1,48 @@
+<div class="page">
+  <header class="top">
+    <div class="h-title">Online Store</div>
+    <div class="h-sub">Select a category to see products</div>
+  </header>
+
+  <nav class="cats">
+    @for (c of categories; track c.id) {
+      <button
+        type="button"
+        class="cat"
+        [class.active]="selectedCategoryId === c.id"
+        (click)="selectCategory(c)"
+      >
+        {{ c.name }}
+      </button>
+    }
+  </nav>
+  <section class="favorites">
+  <h2>⭐ Favorites ({{ favorites.length }})</h2>
+
+  @if (favorites.length === 0) {
+    <p>No favorite products yet</p>
+  } @else {
+    <div class="grid">
+      @for (p of favorites; track p.id) {
+        <app-product-item
+          [product]="p"
+          (favorite)="toggleFavorite($event)"
+        />
+      }
+    </div>
+  }
+</section>
+  <main class="main">
+    @if (selectedCategoryId === null) {
+      <div class="welcome">Please choose a category above.</div>
+    } @else {
+      <app-product-list
+        [products]="selectedProducts"
+        (deleteProduct)="onDelete($event)"
+        (likeProduct)="onLike($event)"
+        (favoriteProduct)="toggleFavorite($event)"
+      />
+    }
+  </main>
+</div>
+

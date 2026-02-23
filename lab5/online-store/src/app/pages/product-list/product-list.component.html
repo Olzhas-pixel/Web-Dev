@@ -1,0 +1,14 @@
+@if (view.length === 0) {
+  <div class="empty">No products in this category</div>
+} @else {
+  <div class="grid">
+    @for (p of view; track p.id) {
+      <app-product-item
+        [product]="p"
+        (like)="onLike($event)"
+        (delete)="onDelete($event)"
+        (favorite)="onFavorite($event)"
+      />
+    }
+  </div>
+}
