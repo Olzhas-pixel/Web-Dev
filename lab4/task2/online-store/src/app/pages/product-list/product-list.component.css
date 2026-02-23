@@ -1,0 +1,292 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 22px;
+}
+
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  border: 1px solid #e6e6e6;
+  background: #fff;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  line-height: 1.1;
+}
+
+.subtitle {
+  margin-top: 2px;
+  font-size: 13px;
+  color: #666;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search input {
+  width: 320px;
+  max-width: 55vw;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+  padding: 0 12px;
+  background: #fff;
+  outline: none;
+}
+
+.search input:focus {
+  border-color: #cfcfcf;
+}
+
+.hint {
+  font-size: 12px;
+  color: #666;
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  padding: 8px 10px;
+  border-radius: 999px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 980px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .search input {
+    width: 100%;
+    max-width: 100%;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #ececec;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+}
+
+.gallery {
+  position: relative;
+  background: #fafafa;
+}
+
+.image-wrap {
+  padding: 12px;
+}
+
+.image-wrap img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  display: block;
+}
+
+.nav {
+  position: absolute;
+  top: 105px;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid #e1e1e1;
+  background: rgba(255, 255, 255, 0.95);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.thumbs {
+  display: flex;
+  gap: 8px;
+  padding: 0 12px 12px 12px;
+  overflow-x: auto;
+}
+
+.thumb {
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.thumb img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.thumb.active {
+  border-color: #111;
+}
+
+.content {
+  padding: 14px 14px 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.name {
+  font-weight: 800;
+  font-size: 16px;
+  text-decoration: none;
+  color: #111;
+  line-height: 1.2;
+}
+
+.name:hover {
+  text-decoration: underline;
+}
+
+.desc {
+  margin: 0;
+  color: #444;
+  line-height: 1.35;
+  font-size: 13px;
+  min-height: 48px;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.price {
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.kzt {
+  font-weight: 800;
+  color: #111;
+  opacity: 0.8;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stars {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.empty {
+  opacity: 0.25;
+}
+
+.badge {
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #f3f3f3;
+  border: 1px solid #ececec;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  flex: 1;
+  border: 1px solid #e3e3e3;
+  background: #fff;
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+.btn:hover {
+  background: #f6f6f6;
+  border-color: #d8d8d8;
+}
+
+.btn.primary {
+  background: #111;
+  border-color: #111;
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: #000;
+}
+
+.open {
+  margin-top: 2px;
+  font-size: 13px;
+  color: #111;
+  text-decoration: none;
+  font-weight: 700;
+  opacity: 0.85;
+}
+
+.open:hover {
+  opacity: 1;
+  text-decoration: underline;
+}

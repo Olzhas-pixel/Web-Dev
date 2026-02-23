@@ -1,0 +1,98 @@
+<div class="page">
+  <header class="header">
+    <div class="brand">
+      <div class="logo">OS</div>
+      <div>
+        <div class="title">Online Store</div>
+        <div class="subtitle">Real products from kaspi.kz</div>
+      </div>
+    </div>
+
+    <div class="search">
+      <input
+        type="text"
+        placeholder="Search products..."
+        [(ngModel)]="query"
+      />
+      <span class="hint">{{ filteredProducts.length }} items</span>
+    </div>
+  </header>
+
+  <main class="grid">
+    @for (p of filteredProducts; track p.id) {
+      <article class="card">
+        <div class="gallery">
+          <div class="image-wrap">
+            <img [src]="getActiveImage(p)" [alt]="p.name" />
+          </div>
+
+          <button
+            type="button"
+            class="nav prev"
+            (click)="$event.preventDefault(); $event.stopPropagation(); prevImage(p)"
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+
+          <button
+            type="button"
+            class="nav next"
+            (click)="$event.preventDefault(); $event.stopPropagation(); nextImage(p)"
+            aria-label="Next image"
+          >
+            ›
+          </button>
+
+          <div class="thumbs">
+            @for (img of p.images; track $index) {
+              <button
+                type="button"
+                class="thumb"
+                [class.active]="isActive(p, $index)"
+                (click)="$event.preventDefault(); $event.stopPropagation(); setImage(p, $index)"
+              >
+                <img [src]="img" [alt]="p.name + ' thumbnail ' + ($index + 1)" />
+              </button>
+            }
+          </div>
+        </div>
+
+        <div class="content">
+          <a class="name" [href]="p.link" target="_blank" rel="noopener">
+            {{ p.name }}
+          </a>
+
+          <p class="desc">{{ p.description }}</p>
+
+          <div class="meta">
+            <div class="price">
+              {{ p.price | number }} <span class="kzt">₸</span>
+            </div>
+
+            <div class="rating">
+              <span class="stars">
+                @for (s of getStars(p.rating); track $index) { <span>★</span> }
+                @for (s of getEmptyStars(p.rating); track $index) { <span class="empty">★</span> }
+              </span>
+              <span class="badge">{{ p.rating }}</span>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn primary" type="button" (click)="shareWhatsApp(p)">
+              Share WhatsApp
+            </button>
+            <button class="btn" type="button" (click)="shareTelegram(p)">
+              Share Telegram
+            </button>
+          </div>
+
+          <a class="open" [href]="p.link" target="_blank" rel="noopener">
+            Open on Kaspi →
+          </a>
+        </div>
+      </article>
+    }
+  </main>
+</div>
