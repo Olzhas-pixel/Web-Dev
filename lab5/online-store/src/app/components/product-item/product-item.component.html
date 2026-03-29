@@ -1,0 +1,60 @@
+<article class="card">
+
+  <a class="image-wrap" [href]="product().link" target="_blank">
+    <img [src]="product().image" [alt]="product().name" />
+  </a>
+
+  <div class="content">
+
+    <a class="name" [href]="product().link" target="_blank">
+      {{ product().name }}
+    </a>
+
+    <p class="desc">
+      {{ product().description }}
+    </p>
+
+    <div class="meta">
+      <div class="price">
+        {{ product().price | number }} ₸
+      </div>
+      <div class="rating">
+        ⭐ {{ product().rating }}
+      </div>
+    </div>
+
+    <div class="likes">
+      ❤ {{ product().likes }}
+    </div>
+
+    <div class="actions">
+      <button class="btn primary"
+              (click)="like.emit(product().id)">
+        Like
+      </button>
+
+      <button class="btn danger"
+              (click)="delete.emit(product().id)">
+        Delete
+      </button>
+
+      <button class="btn"
+              (click)="favorite.emit(product().id)">
+        {{ product().isFavorite ? '⭐ In Favorites' : '⭐ Add to Favorites' }}
+      </button>
+    </div>
+
+    <div class="actions">
+      <button class="btn"
+              (click)="shareWhatsApp(product())">
+        WhatsApp
+      </button>
+
+      <button class="btn"
+              (click)="shareTelegram(product())">
+        Telegram
+      </button>
+    </div>
+
+  </div>
+</article>
