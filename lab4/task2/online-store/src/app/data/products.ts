@@ -13,7 +13,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 2,
-    name: "Iphone 15 pro",
+    name: "Iphone 12",
     description: "Apple iPhone 15 Pro features a powerful A17 Pro chip and a titanium design.",
     price: 900000,
     rating: 4.7,
