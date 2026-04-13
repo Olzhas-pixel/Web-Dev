@@ -1,17 +1,15 @@
-from django.shortcuts import get_object_or_404
-from rest_framework.decorators import api_view
+from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-
 from ..models import Product
 from ..serializers import ProductSerializer
-from rest_framework.views import APIView
 
 
 class ProductListAPIView(APIView):
+
     def get(self, request):
-        product_list = Product.objects.all()
-        serializer = ProductSerializer(product_list, many=True)
+        products = Product.objects.all()
+        serializer = ProductSerializer(products, many=True)
         return Response(serializer.data)
 
     def post(self, request):
@@ -19,29 +17,39 @@ class ProductListAPIView(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors)
+
 
 class ProductDetailAPIView(APIView):
+
     def get_object(self, product_id):
-        product = get_object_or_404(Product, id=product_id)
-        return product
+        try:
+            return Product.objects.get(id=product_id)
+        except Product.DoesNotExist:
+            return None
 
     def get(self, request, product_id):
         product = self.get_object(product_id)
+        if not product:
+            return Response(status=404)
         serializer = ProductSerializer(product)
         return Response(serializer.data)
 
     def put(self, request, product_id):
         product = self.get_object(product_id)
+        if not product:
+            return Response(status=404)
+
         serializer = ProductSerializer(product, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-        else:
-            return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors)
 
     def delete(self, request, product_id):
         product = self.get_object(product_id)
+        if not product:
+            return Response(status=404)
+
         product.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(status=204)

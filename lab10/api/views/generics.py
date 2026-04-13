@@ -1,7 +1,4 @@
 from rest_framework import generics
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from django.shortcuts import get_object_or_404
 from ..models import Product, Category
 from ..serializers import ProductSerializer, CategorySerializer
 
@@ -10,23 +7,27 @@ class ProductListAPIView(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
+
 class ProductDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     lookup_url_kwarg = 'product_id'
 
+
+# CATEGORY
 class CategoryListAPIView(generics.ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
+
 class CategoryDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    lookup_url_kwarg = 'category_id'
 
-class CategoryProductsAPIView(APIView):
-    def get(self, request, category_id):
-        get_object_or_404(Category, id=category_id)
-        products = Product.objects.filter(category_id=category_id)
-        serializer = ProductSerializer(products, many=True)
-        return Response(serializer.data)
+
+class CategoryProductsAPIView(generics.ListAPIView):
+    serializer_class = ProductSerializer
+
+    def get_queryset(self):
+        category_id = self.kwargs['id']
+        return Product.objects.filter(category_id=category_id)
