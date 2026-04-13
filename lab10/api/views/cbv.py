@@ -39,7 +39,6 @@ class ProductDetailAPIView(APIView):
         product = self.get_object(product_id)
         if not product:
             return Response(status=404)
-
         serializer = ProductSerializer(product, data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -50,6 +49,21 @@ class ProductDetailAPIView(APIView):
         product = self.get_object(product_id)
         if not product:
             return Response(status=404)
-
         product.delete()
         return Response(status=204)
+
+
+class ActiveProductListAPIView(APIView):
+
+    def get(self, request):
+        products = Product.objects.filter(is_active=True)
+        serializer = ProductSerializer(products, many=True)
+        return Response(serializer.data)
+
+
+class ExpensiveProductListAPIView(APIView):
+
+    def get(self, request):
+        products = Product.objects.filter(price__gt=100000)
+        serializer = ProductSerializer(products, many=True)
+        return Response(serializer.data)

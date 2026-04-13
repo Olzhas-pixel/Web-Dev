@@ -14,6 +14,20 @@ class ProductDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     lookup_url_kwarg = 'product_id'
 
 
+class ActiveProductListAPIView(generics.ListAPIView):
+    serializer_class = ProductSerializer
+
+    def get_queryset(self):
+        return Product.objects.filter(is_active=True)
+
+
+class ExpensiveProductListAPIView(generics.ListAPIView):
+    serializer_class = ProductSerializer
+
+    def get_queryset(self):
+        return Product.objects.filter(price__gt=100000)
+
+
 # CATEGORY
 class CategoryListAPIView(generics.ListCreateAPIView):
     queryset = Category.objects.all()

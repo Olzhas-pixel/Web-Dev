@@ -18,9 +18,9 @@ class ProductListAPIView(mixins.ListModelMixin,
 
 
 class ProductDetailAPIView(mixins.RetrieveModelMixin,
-                          mixins.UpdateModelMixin,
-                          mixins.DestroyModelMixin,
-                          generics.GenericAPIView):
+                           mixins.UpdateModelMixin,
+                           mixins.DestroyModelMixin,
+                           generics.GenericAPIView):
 
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
@@ -34,3 +34,27 @@ class ProductDetailAPIView(mixins.RetrieveModelMixin,
 
     def delete(self, request, product_id):
         return self.destroy(request, product_id=product_id)
+
+
+class ActiveProductListAPIView(mixins.ListModelMixin,
+                                generics.GenericAPIView):
+
+    serializer_class = ProductSerializer
+
+    def get_queryset(self):
+        return Product.objects.filter(is_active=True)
+
+    def get(self, request):
+        return self.list(request)
+
+
+class ExpensiveProductListAPIView(mixins.ListModelMixin,
+                                   generics.GenericAPIView):
+
+    serializer_class = ProductSerializer
+
+    def get_queryset(self):
+        return Product.objects.filter(price__gt=100000)
+
+    def get(self, request):
+        return self.list(request)
